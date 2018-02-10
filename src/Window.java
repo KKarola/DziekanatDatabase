@@ -1,6 +1,10 @@
 
+import Group.StudentsGroup;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
     public static final String[] options = {"Grupy", "Oceny", "Przedmioty", "Studenci", "Wykładowcy"};
@@ -31,7 +35,13 @@ public class Window extends JFrame {
     }
 
     public void click() {
-
+        button[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StudentsGroup studentsGroup = new StudentsGroup();
+                studentsGroup.setVisible(true);
+            }
+        });
     }
 
     public void addLabel() {
