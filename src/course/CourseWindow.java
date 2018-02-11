@@ -1,10 +1,10 @@
 package course;
 
 import connectDB.Connect;
+import create.Windows;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -12,36 +12,17 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentsCourse extends JDialog {
+public class CourseWindow extends Windows {
     static Connect connect = new Connect();
-    private static final String[] options = {"Dodaj", "Zmień", "Usuń"};
-    public static final JButton[] button = new JButton[options.length];
-    JTable table = new JTable();
+    JTable table;
 
-    public StudentsCourse() {
-        initComponent();
-        addButtons();
-        addTable();
-        click();
-    }
-
-    public void initComponent() {
-        setTitle("Przedmiot");
-        setBounds(0, 0, 400, 400);
-        setLocationRelativeTo(null);
-        getContentPane().setLayout(new BorderLayout());
-    }
-
-    public void addButtons() {
-        JPanel panel = new JPanel();
-        for (int i = 0; i < button.length; i++) {
-            button[i] = new JButton(options[i]);
-            panel.add(button[i]);
-        }
-        add(panel, BorderLayout.PAGE_START);
+    public CourseWindow() {
+        super();
+        setTitle("Przedmioty");
     }
 
     public void addTable() {
+        table = new JTable();
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {

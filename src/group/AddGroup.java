@@ -1,16 +1,16 @@
 package group;
 
 import connectDB.Connect;
-import create.AddUpdate;
+import create.AddUpdateDelete;
 import java.sql.SQLException;
 
-public class AddGroup extends AddUpdate {
+public class AddGroup extends AddUpdateDelete {
     private static final String[] options = {"Numer grupy", "Nazwa grupy"};
     Connect connect = new Connect();
 
     public AddGroup() {
         super();
-        setTitle("Dodaj grupe");
+        setTitle("Dodaj grupe studencką");
     }
 
     @Override
@@ -20,8 +20,8 @@ public class AddGroup extends AddUpdate {
 
     @Override
     public void action1() {
-        StudentsGroup studentsGroup = new StudentsGroup();
-        studentsGroup.setVisible(true);
+        GroupWindow groupWindow = new GroupWindow();
+        groupWindow.setVisible(true);
         dispose();
     }
 

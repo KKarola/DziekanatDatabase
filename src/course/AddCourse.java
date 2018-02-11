@@ -1,10 +1,10 @@
 package course;
 
-import create.AddUpdate;
+import create.AddUpdateDelete;
 import connectDB.Connect;
 import java.sql.SQLException;
 
-public class AddCourse extends AddUpdate {
+public class AddCourse extends AddUpdateDelete {
     private static final String[] options = {"Numer przedmiotu", "Nazwa przedmiotu", "Skrót przedmiotu", "ECTS", "Grupa_Id_grupy"};
     Connect connect = new Connect();
 
@@ -20,8 +20,8 @@ public class AddCourse extends AddUpdate {
 
     @Override
     public void action1() {
-        StudentsCourse studentsCourse = new StudentsCourse();
-        studentsCourse.setVisible(true);
+        CourseWindow courseWindow = new CourseWindow();
+        courseWindow.setVisible(true);
         dispose();
     }
 

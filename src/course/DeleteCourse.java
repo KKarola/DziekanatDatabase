@@ -1,11 +1,11 @@
 package course;
 
 import connectDB.Connect;
-import create.Delete;
+import create.AddUpdateDelete;
 import java.sql.SQLException;
 
-public class DeleteCourse extends Delete{
-    private static final String options = "Numer przedmiotu";
+public class DeleteCourse extends AddUpdateDelete {
+    private static final String[] options = {"Numer przedmiotu"};
     Connect connect = new Connect();
 
     public DeleteCourse() {
@@ -14,21 +14,22 @@ public class DeleteCourse extends Delete{
     }
 
     @Override
-    public String getOption() {
+    public String[] getOptions() {
         return options;
     }
 
     @Override
     public void action1() {
-        StudentsCourse studentsCourse = new StudentsCourse();
-        studentsCourse.setVisible(true);
+        CourseWindow courseWindow = new CourseWindow();
+        courseWindow.setVisible(true);
         dispose();
     }
 
+    @Override
     public void action2() {
         connect.connect();
         try {
-            String sqlRecord = "DELETE FROM PRZEDMIOT WHERE id_przedmiotu = '" + textField1.getText() + "'";
+            String sqlRecord = "DELETE FROM PRZEDMIOT WHERE id_przedmiotu = '" + textFields[0].getText() + "'";
             connect.preparedStatement = connect.conn.prepareStatement(sqlRecord);
             connect.preparedStatement.executeUpdate();
         } catch (SQLException se) {
@@ -37,3 +38,4 @@ public class DeleteCourse extends Delete{
         connect.disconnet();
     }
 }
+

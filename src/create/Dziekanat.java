@@ -1,5 +1,5 @@
 package create;
 
 public class Dziekanat {
-    public static void main(String[] args) { new Window(); }
+    public static void main(String[] args) { new MainWindow(); }
 }

@@ -5,12 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class AddUpdate extends JDialog {
+public abstract class AddUpdateDelete extends JDialog {
     public abstract String[] getOptions();
     public JPanel[] panels = new JPanel[getOptions().length];
     public JTextField[] textFields = new JTextField[getOptions().length];
+    public abstract void action1();
+    public abstract void action2();
 
-    public AddUpdate() {
+    public AddUpdateDelete() {
         initComponents();
         getPanels();
         panel1();
@@ -19,7 +21,7 @@ public abstract class AddUpdate extends JDialog {
 
     public void initComponents() {
         setTitle("");
-        setBounds(0, 0, 300, 175);
+        setBounds(0, 0, 340, (getOptions().length + 2 ) * 32 + 20);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new GridLayout(getOptions().length + 2, 1));
     }
@@ -57,9 +59,5 @@ public abstract class AddUpdate extends JDialog {
         });
         getContentPane().add(button2);
     }
-
-    public void action1() { }
-
-    public void action2() { }
 
 }

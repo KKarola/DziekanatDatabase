@@ -1,35 +1,36 @@
 package group;
 
 import connectDB.Connect;
-import create.Delete;
+import create.AddUpdateDelete;
 import java.sql.SQLException;
 
 
-public class DeleteGroup extends Delete {
-    private static final String options = "Numer grupy";
+public class DeleteGroup extends AddUpdateDelete {
+    private static final String[] options = {"Numer grupy"};
     Connect connect = new Connect();
 
     public DeleteGroup() {
         super();
-        setTitle("Usuń grupe");
+        setTitle("Usuń grupę studencką");
     }
 
     @Override
-    public String getOption() {
+    public String[] getOptions() {
         return options;
     }
 
     @Override
     public void action1() {
-        StudentsGroup studentsGroupe = new StudentsGroup();
-        studentsGroupe.setVisible(true);
+        GroupWindow groupWindow = new GroupWindow();
+        groupWindow.setVisible(true);
         dispose();
     }
 
+    @Override
     public void action2() {
         connect.connect();
         try {
-            String sqlRecord = "DELETE FROM GRUPA WHERE id_grupy = '" + textField1.getText() + "'";
+            String sqlRecord = "DELETE FROM GRUPA WHERE id_grupy = '" + textFields[0].getText() + "'";
             connect.preparedStatement = connect.conn.prepareStatement(sqlRecord);
             connect.preparedStatement.executeUpdate();
         } catch (SQLException se) {
@@ -38,5 +39,3 @@ public class DeleteGroup extends Delete {
         connect.disconnet();
     }
 }
-
-

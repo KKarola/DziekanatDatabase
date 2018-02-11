@@ -1,18 +1,17 @@
 package create;
 
-import group.StudentsGroup;
-import course.StudentsCourse;
-
+import group.GroupWindow;
+import course.CourseWindow;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Window extends JFrame {
+public class MainWindow extends JFrame {
     public static final String[] options = {"Grupy", "Oceny", "Przedmioty", "Studenci", "Wykładowcy"};
     public static final JButton[] button = new JButton[options.length];
 
-    Window() {
+    MainWindow() {
         setTitle("Dziekanat");
         setPreferredSize(new Dimension(500,160));
         setLayout(new GridLayout(2,1));
@@ -40,15 +39,15 @@ public class Window extends JFrame {
         button[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StudentsGroup studentsGroup = new StudentsGroup();
-                studentsGroup.setVisible(true);
+                GroupWindow groupWindow = new GroupWindow();
+                groupWindow.setVisible(true);
             }
         });
         button[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StudentsCourse studentsCourse = new StudentsCourse();
-                studentsCourse.setVisible(true);
+                CourseWindow courseWindow = new CourseWindow();
+                courseWindow.setVisible(true);
             }
         });
     }

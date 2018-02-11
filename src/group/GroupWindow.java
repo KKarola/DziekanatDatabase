@@ -1,11 +1,10 @@
 package group;
 
 import connectDB.Connect;
-
+import create.Windows;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -13,36 +12,17 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentsGroup extends JDialog {
+public class GroupWindow extends Windows {
     static Connect connect = new Connect();
-    private static final String[] options = {"Dodaj", "Zmień", "Usuń"};
-    public static final JButton[] button = new JButton[options.length];
-    JTable table = new JTable();
+    JTable table;
 
-    public StudentsGroup() {
-        initComponent();
-        addButtons();
-        addTable();
-        click();
-    }
-
-    public void initComponent() {
-        setTitle("Grupa studencka");
-        setBounds(0, 0, 400, 400);
-        setLocationRelativeTo(null);
-        getContentPane().setLayout(new BorderLayout());
-    }
-
-    public void addButtons() {
-        JPanel panel = new JPanel();
-        for (int i = 0; i < button.length; i++) {
-            button[i] = new JButton(options[i]);
-            panel.add(button[i]);
-        }
-        add(panel, BorderLayout.PAGE_START);
+    public GroupWindow() {
+        super();
+        setTitle("Grupy studenckie");
     }
 
     public void addTable() {
+        table = new JTable();
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex){
@@ -54,7 +34,7 @@ public class StudentsGroup extends JDialog {
         columnsName[1] = "Nazwa_grupy";
         model.setColumnIdentifiers(columnsName);
 
-        Object[] rowData = new Object[4];
+        Object[] rowData = new Object[2];
         for (int i = 0; i < getGroup().size(); i++) {
             rowData[0] = getGroup().get(i).getId();
             rowData[1] = getGroup().get(i).getNameGroup();
