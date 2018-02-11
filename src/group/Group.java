@@ -1,4 +1,4 @@
-package Group;
+package group;
 
 public class Group {
     private int id_grupy;

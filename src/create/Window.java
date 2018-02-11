@@ -1,5 +1,7 @@
+package create;
 
-import Group.StudentsGroup;
+import group.StudentsGroup;
+import course.StudentsCourse;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,6 +42,13 @@ public class Window extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 StudentsGroup studentsGroup = new StudentsGroup();
                 studentsGroup.setVisible(true);
+            }
+        });
+        button[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StudentsCourse studentsCourse = new StudentsCourse();
+                studentsCourse.setVisible(true);
             }
         });
     }

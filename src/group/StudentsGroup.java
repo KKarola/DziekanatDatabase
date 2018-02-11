@@ -1,4 +1,4 @@
-package Group;
+package group;
 
 import connectDB.Connect;
 
@@ -123,8 +123,8 @@ public class StudentsGroup extends JDialog {
                     String nameGroup = model.getValueAt(selectRow, 1).toString();
                     UpdateGroup updateGroup = new UpdateGroup();
                     updateGroup.setVisible(true);
-                    updateGroup.textField1.setText(idGroup);
-                    updateGroup.textField2.setText(nameGroup);
+                    updateGroup.textFields[0].setText(idGroup);
+                    updateGroup.textFields[1].setText(nameGroup);
                     dispose();
                 }
             }

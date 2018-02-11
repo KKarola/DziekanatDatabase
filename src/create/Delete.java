@@ -1,17 +1,15 @@
-package Group;
+package create;
 
-import connectDB.Connect;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
-public class DeleteGroup extends JDialog {
-    Connect connect = new Connect();
-    JTextField textField1 = new JTextField(10);
+public abstract class Delete extends JDialog {
+    public abstract String getOption();
+    public JTextField textField1;
 
-    public DeleteGroup() {
+    public Delete() {
         initComponents();
         panel1();
         panel2();
@@ -19,7 +17,7 @@ public class DeleteGroup extends JDialog {
     }
 
     public void initComponents() {
-        setTitle("Usuń grupę studencką");
+        setTitle("");
         setBounds(0, 0, 300, 175);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new GridLayout(3, 1));
@@ -27,7 +25,8 @@ public class DeleteGroup extends JDialog {
 
     public void panel1() {
         JPanel panel1 = new JPanel();
-        panel1.add(new JLabel("Numer grupy"));
+        panel1.add(new JLabel(getOption()));
+        textField1 = new JTextField(10);
         panel1.add(textField1);
         getContentPane().add(panel1);
     }
@@ -55,23 +54,7 @@ public class DeleteGroup extends JDialog {
         getContentPane().add(button2);
     }
 
-    public void action1() {
-        StudentsGroup studentsGroup = new StudentsGroup();
-        studentsGroup.setVisible(true);
-        dispose();
-    }
+    public void action1() { }
 
-    public void action2() {
-        connect.connect();
-        try {
-            String sqlRecord = "DELETE FROM GRUPA WHERE id_grupy = '" + textField1.getText() + "'";
-            connect.preparedStatement = connect.conn.prepareStatement(sqlRecord);
-            connect.preparedStatement.executeUpdate();
-        } catch (SQLException se) {
-            System.out.println("Error: " + se);
-        }
-        connect.disconnet();
-    }
+    public void action2() { }
 }
-
-
