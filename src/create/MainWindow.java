@@ -1,6 +1,9 @@
 package create;
 
 import group.GroupWindow;
+import lecturer.LecturerWindow;
+import result.ResultWindow;
+import student.StudentWindow;
 import course.CourseWindow;
 import javax.swing.*;
 import java.awt.*;
@@ -43,11 +46,32 @@ public class MainWindow extends JFrame {
                 groupWindow.setVisible(true);
             }
         });
+        button[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ResultWindow resultWindow = new ResultWindow();
+                resultWindow.setVisible(true);
+            }
+        });
         button[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CourseWindow courseWindow = new CourseWindow();
                 courseWindow.setVisible(true);
+            }
+        });
+        button[3].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StudentWindow studentWindow = new StudentWindow();
+                studentWindow.setVisible(true);
+            }
+        });
+        button[4].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LecturerWindow lecturerWindow = new LecturerWindow();
+                lecturerWindow.setVisible(true);
             }
         });
     }

@@ -18,7 +18,7 @@ public abstract class Windows extends JFrame {
 
     public void initComponent() {
         setTitle("");
-        setBounds(0, 0, 400, 400);
+        setBounds(0, 0, 800, 400);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
     }
